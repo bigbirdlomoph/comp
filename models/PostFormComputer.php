@@ -19,7 +19,7 @@ class PostFormComputer extends FormComputer
     {
         return [
             [['id'], 'integer'],
-            [['project_name', 'year_budget', 'money_source', 'hoscode', 'cupcode', 'hw_id', 'procurement', 'location_ins', 'quantity', 'old_hw_name', 'post_old_hw', 'year_install', 'problem', 'description_hw', 'workload_hw', 'it_staff'], 'safe'],
+            [['project_name', 'year_budget', 'year_month', 'hoscode', 'cupcode', 'distid', 'hw_id', 'quantity', 'price', 'sum_price', 'new_hw', 'replace_hw', 'year_install', 'note'], 'safe'],
         ];
     }
 
@@ -64,20 +64,18 @@ class PostFormComputer extends FormComputer
 
         $query->andFilterWhere(['like', 'project_name', $this->project_name])
             ->andFilterWhere(['like', 'year_budget', $this->year_budget])
-            ->andFilterWhere(['like', 'money_source', $this->money_source])
+            ->andFilterWhere(['like', 'year_month', $this->year_month])
             ->andFilterWhere(['like', 'hoscode', $this->hoscode])
             ->andFilterWhere(['like', 'cupcode', $this->cupcode])
+            ->andFilterWhere(['like', 'distid', $this->distid])
             ->andFilterWhere(['like', 'hw_id', $this->hw_id])
-            ->andFilterWhere(['like', 'procurement', $this->procurement])
-            ->andFilterWhere(['like', 'location_ins', $this->location_ins])
             ->andFilterWhere(['like', 'quantity', $this->quantity])
-            ->andFilterWhere(['like', 'old_hw_name', $this->old_hw_name])
-            ->andFilterWhere(['like', 'post_old_hw', $this->post_old_hw])
+            ->andFilterWhere(['like', 'price', $this->price])
+            ->andFilterWhere(['like', 'sum_price', $this->sum_price])
+            ->andFilterWhere(['like', 'new_hw', $this->new_hw])
+            ->andFilterWhere(['like', 'replace_hw', $this->replace_hw])
             ->andFilterWhere(['like', 'year_install', $this->year_install])
-            ->andFilterWhere(['like', 'problem', $this->problem])
-            ->andFilterWhere(['like', 'description_hw', $this->description_hw])
-            ->andFilterWhere(['like', 'workload_hw', $this->workload_hw])
-            ->andFilterWhere(['like', 'it_staff', $this->it_staff]);
+            ->andFilterWhere(['like', 'note', $this->note]);
 
         return $dataProvider;
     }

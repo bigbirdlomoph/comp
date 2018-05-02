@@ -41,11 +41,12 @@ class FormComputer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_name', 'year_budget', 'money_source', 'hoscode', 'hw_id', 'procurement'], 'required'],
-            [['project_name', 'location_ins', 'old_hw_name', 'post_old_hw', 'problem', 'description_hw', 'workload_hw', 'it_staff'], 'string', 'max' => 255],
-            [['year_budget', 'year_install'], 'string', 'max' => 4],
-            [['money_source'], 'string', 'max' => 1],
-            [['hoscode', 'cupcode', 'hw_id', 'procurement', 'quantity'], 'string', 'max' => 5],
+            [['project_name', 'year_budget', 'year_month', 'hoscode', 'hw_id', 'quantity', 'price', 'new_hw', 'replace_hw'], 'required'],
+            [['project_name', 'note'], 'string', 'max' => 255],
+            [['year_budget', 'distid', 'year_install'], 'string', 'max' => 4],
+            [['hospcode', 'cupcode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'string', 'max' => 5],
+            // [['money_source'], 'string', 'max' => 1],
+            [['year_month'], 'string', 'max' => 7],
         ];
     }
 
@@ -58,20 +59,18 @@ class FormComputer extends \yii\db\ActiveRecord
             'id' => 'รหัสลับ',
             'project_name' => 'ชื่อโครงการ',
             'year_budget' => 'ปีงบประมาณ',
-            'money_source' => 'แหล่งเงินงบประมาณ',
-            'hoscode' => 'หน่วยบริการ',
-            'cupcode' => 'เครือข่ายบริการ',
+            'year_month' => 'ปี-เดือน ขออนุมัติ (2018-02)',
+            'hoscode' => 'รหัสหน่วยบริการ 5 หลัก',
+            'cupcode' => 'รหัสเครือข่ายบริการ 5 หลัก',
+            'distid' => 'รหัสอำเภอ',
             'hw_id' => 'รหัสอุปกรณ์คอมพิวเตอร์',
-            'procurement' => 'วิธีการจัดหา',
-            'location_ins' => 'สถานที่ติดตั้งครุภัณฑ์',
             'quantity' => 'จำนวน (ชุด)',
-            'old_hw_name' => 'ครุภัณฑ์คอมพิวเตอร์เดิมที่มีอยู่',
-            'post_old_hw' => 'สถานที่ติดตั้งครุภัณฑ์เดิม',
-            'year_install' => 'ปีที่ติดตั้ง',
-            'problem' => 'ปัญหาอุปสรรคในการปฏิบัติงาน',
-            'description_hw' => 'ลักษณะงานหรือระบบงานที่จะใช้กับอุปกรณ์',
-            'workload_hw' => 'เปรียบเทียบอุปกรณ์ที่จัดหาในครั้งนี้กับปริมาณงาน',
-            'it_staff' => 'บุคลากรด้านคอมพิวเตอร์หรือบุคลากรที่ได้รับมอบหมาย',
+            'price' => 'ราคาต่อหน่วย',
+            'sum_price' => 'ราคารวมต่อหน่วย',
+            'new_hw' => 'จัดหาใหม่ (จำนวน)',
+            'replace_hw' => 'ทดแทน (จำนวน)',
+            'year_install' => 'ปีที่ติดตั้ง (กรณีซื้อทดแทน)',
+            'note' => 'หมายเหตุ',
         ];
     }
 }

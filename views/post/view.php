@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->id, 'hoscode' => $model->hoscode, 'hw_id' => $model->hw_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'คุณต้องการลบ record นี้ ใช่ไหม?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -31,20 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'project_name',
             'year_budget',
-            'money_source',
+            'year_month',
             'hoscode',
             'cupcode',
+            'distid',
             'hw_id',
-            'procurement',
-            'location_ins',
             'quantity',
-            'old_hw_name',
-            'post_old_hw',
+            'price',
+            'sum_price',
+            'new_hw',
+            'replace_hw',
             'year_install',
-            'problem',
-            'description_hw',
-            'workload_hw',
-            'it_staff',
+            'note',
         ],
     ]) ?>
 

@@ -7,12 +7,12 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\PostFormComputer */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Form Computers';
+$this->title = 'รายการจัดหาระบบคอมพิวเตอร์ภาครัฐฯ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="form-computer-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2 class="thsb f40p"><?= Html::encode($this->title) ?></h2>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -24,25 +24,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'project_name',
             'year_budget',
-            'money_source',
+            'year_month',
             'hoscode',
-            // 'cupcode',
-            // 'hw_id',
-            // 'procurement',
-            // 'location_ins',
-            // 'quantity',
-            // 'old_hw_name',
-            // 'post_old_hw',
-            // 'year_install',
-            // 'problem',
-            // 'description_hw',
-            // 'workload_hw',
-            // 'it_staff',
+            'cupcode',
+            'distid',
+            'hw_id',
+            'quantity',
+            'price',
+            'sum_price',
+            'new_hw',
+            'replace_hw',
+            'year_install',
+            'note',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template'=>'{copy} {view} {update} {delete}',
+                'buttons'=>[
+                    'copy' => function($url,$model,$key){
+                        return Html::a('<i class="glyphicon glyphicon-duplicate"></i>',$url);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
