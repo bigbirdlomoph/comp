@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('แบบฟอร์มรายงานการจัดหาระบบคอมพิวเตอร์ภาครัฐ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -31,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'project_name',
             'year_budget',
-            'year_month',
+            'total_budget',
+            'month_approve',
             'hoscode',
             'cupcode',
             'distid',

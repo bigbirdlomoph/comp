@@ -68,13 +68,16 @@ class PostController extends Controller
         $model = new FormComputer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
             return $this->redirect(['view', 'id' => $model->id, 'hoscode' => $model->hoscode, 'hw_id' => $model->hw_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
-    }
+    } 
+
+    
 
     /**
      * Updates an existing FormComputer model.
@@ -84,9 +87,9 @@ class PostController extends Controller
      * @param string $hw_id
      * @return mixed
      */
-    public function actionUpdate($id, $hoscode, $hw_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $hoscode, $hw_id);
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id, 'hoscode' => $model->hoscode, 'hw_id' => $model->hw_id]);
@@ -105,9 +108,9 @@ class PostController extends Controller
      * @param string $hw_id
      * @return mixed
      */
-    public function actionDelete($id, $hoscode, $hw_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $hoscode, $hw_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -121,9 +124,9 @@ class PostController extends Controller
      * @return FormComputer the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $hoscode, $hw_id)
+    protected function findModel($id)
     {
-        if (($model = FormComputer::findOne(['id' => $id, 'hoscode' => $hoscode, 'hw_id' => $hw_id])) !== null) {
+        if (($model = FormComputer::findOne(['id' => $id])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

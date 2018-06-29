@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Form Computer: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Form Computers', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id, 'hoscode' => $model->hoscode, 'hw_id' => $model->hw_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];//, 'hoscode' => $model->hoscode, 'hw_id' => $model->hw_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="form-computer-update">

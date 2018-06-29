@@ -11,6 +11,7 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -61,17 +62,22 @@ AppAsset::register($this);
     //End Menu group 2
     
     //Start Menu group 3 other
-    //$rpt_menu_g3[] = ['label' => '<i class="fa fa-search"></i> 
-    //            ประชากร 35+ คัดกรองโรคเบาหวาน', 'url' => ['report/dmscramp']];
-    //$rpt_menu_g3[] = ['label' => '<i class="fa fa-search"></i> 
-    //            ประชากร 35+ คัดกรองโรคความดันโลหิตสูง', 'url' => ['report/htscramp']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                10 อันดับ มูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                10 อันดับครุภัณฑ์ ที่จัดหาสูงสุด', 'url' => ['report/sumqty']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                รายงานสรุปแยกรายเดือน', 'url' => ['report/summary']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                รายงานสรุปแยกรายหน่วยบริการ', 'url' => ['report/sumhos']];
     //End Menu group 3
     
        
     $menuItems = [
-        ['label' => '<i class="fa fa-home"></i> หน้าแรก', 'url' => ['/site/index']],
-        ['label' => '<i class="fa fa-desktop"></i> ระบบจัดหาคอมพิวเตอร์ภาครัฐ', 'items' => $rpt_menu_g1],
-        ['label' => '<i class="fa fa-video-camera"></i> ระบบจัดหากล้องวงจรปิด (CCTV)', 'items' => $rpt_menu_g2],
+        ['label' => '<i class="fa fa-home"></i> หน้าแรก', 'url' => ['/']],
+        ['label' => '<i class="fa fa-desktop"></i> Computer', 'items' => $rpt_menu_g1],
+        ['label' => '<i class="fa fa-video-camera"></i> CCTV', 'items' => $rpt_menu_g2],
+        ['label' => '<i class="fa fa-bar-chart-o"></i> รายงานสรุป', 'items' => $rpt_menu_g3],
         ['label' => 'ถาม-ตอบ', 'url' => ['/site/qa']],
         ['label' => 'เกี่ยวกับเรา', 'url' => ['/site/about']],
     ];

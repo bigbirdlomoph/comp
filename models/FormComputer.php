@@ -41,12 +41,14 @@ class FormComputer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_name', 'year_budget', 'year_month', 'hoscode', 'hw_id', 'quantity', 'price', 'new_hw', 'replace_hw'], 'required'],
+            [['project_name', 'year_budget', 'month_approve', 'hoscode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'required'],
             [['project_name', 'note'], 'string', 'max' => 255],
             [['year_budget', 'distid', 'year_install'], 'string', 'max' => 4],
-            [['hospcode', 'cupcode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'string', 'max' => 5],
-            // [['money_source'], 'string', 'max' => 1],
-            [['year_month'], 'string', 'max' => 7],
+            [['hoscode', 'cupcode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'string', 'max' => 5],
+            [['price', 'sum_price'], 'string', 'max' => 7],
+            [['money_source'], 'string', 'max' => 100],
+            [['month_approve'], 'string', 'max' => 50],
+            [['total_budget'], 'string', 'max' => 10],
         ];
     }
 
@@ -59,12 +61,14 @@ class FormComputer extends \yii\db\ActiveRecord
             'id' => 'รหัสลับ',
             'project_name' => 'ชื่อโครงการ',
             'year_budget' => 'ปีงบประมาณ',
-            'year_month' => 'ปี-เดือน ขออนุมัติ (2018-02)',
-            'hoscode' => 'รหัสหน่วยบริการ 5 หลัก',
+            'total_budget' => 'งบประมาณรวมทั้งสิ้น',
+            'money_source' => 'แหล่งเงินงบประมาณ',
+            'month_approve' => 'เดือนที่ขออนุมัติ',
+            'hoscode' => 'หน่วยงานที่ขออนุมัติจัดหา',
             'cupcode' => 'รหัสเครือข่ายบริการ 5 หลัก',
             'distid' => 'รหัสอำเภอ',
-            'hw_id' => 'รหัสอุปกรณ์คอมพิวเตอร์',
-            'quantity' => 'จำนวน (ชุด)',
+            'hw_id' => 'ครุภัณฑ์คอมพิวเตอร์',
+            'quantity' => 'จำนวน',
             'price' => 'ราคาต่อหน่วย',
             'sum_price' => 'ราคารวมต่อหน่วย',
             'new_hw' => 'จัดหาใหม่ (จำนวน)',

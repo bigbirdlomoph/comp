@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="form-computer-create">
 
-    <h2 class="thsb f40p"><?= Html::encode($this->title) ?></h2>
+    <!-- <h2 class="thsb f40p"><?= Html::encode($this->title) ?></h2> -->
 
     <?= $this->render('_form', [
         'model' => $model,

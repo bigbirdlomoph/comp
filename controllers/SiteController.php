@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\FormComputer;
+use yii\data\ArrayDataProvider;
 
 class SiteController extends Controller
 {
@@ -165,9 +166,10 @@ class SiteController extends Controller
     }
     
     public function actionFormcomputer()
-{
+    {
       $model = new FormComputer();
       return $this->render('formcomputer',[
                 'model' => $model ]);
-}
+    }
+
 }

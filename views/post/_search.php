@@ -21,6 +21,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'year_budget') ?>
 
+    <?= $form->field($model, 'total_budget') ?>
+
     <?= $form->field($model, 'money_source') ?>
 
     <?= $form->field($model, 'hoscode') ?>

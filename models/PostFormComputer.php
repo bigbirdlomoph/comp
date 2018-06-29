@@ -19,7 +19,7 @@ class PostFormComputer extends FormComputer
     {
         return [
             [['id'], 'integer'],
-            [['project_name', 'year_budget', 'year_month', 'hoscode', 'cupcode', 'distid', 'hw_id', 'quantity', 'price', 'sum_price', 'new_hw', 'replace_hw', 'year_install', 'note'], 'safe'],
+            [['project_name', 'year_budget', 'total_budget', 'month_approve', 'hoscode', 'cupcode', 'distid', 'hw_id', 'quantity', 'price', 'sum_price', 'new_hw', 'replace_hw', 'year_install', 'note'], 'safe'],
         ];
     }
 
@@ -64,7 +64,8 @@ class PostFormComputer extends FormComputer
 
         $query->andFilterWhere(['like', 'project_name', $this->project_name])
             ->andFilterWhere(['like', 'year_budget', $this->year_budget])
-            ->andFilterWhere(['like', 'year_month', $this->year_month])
+            ->andFilterWhere(['like', 'total_budget', $this->total_budget])
+            ->andFilterWhere(['like', 'month_approve', $this->month_approve])
             ->andFilterWhere(['like', 'hoscode', $this->hoscode])
             ->andFilterWhere(['like', 'cupcode', $this->cupcode])
             ->andFilterWhere(['like', 'distid', $this->distid])

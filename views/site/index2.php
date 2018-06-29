@@ -8,32 +8,74 @@ $this->title = 'CSPC';
 <div class="site-index">
 
     <div class="jumbotron">
-        <div class="thsb f36p">
-            คณะกรรมการจัดหาระบบคอมพิวเตอร์ สำนักงานสาธารณสุขจังหวัดเลย
+        <div class="thsb f34p">
+            คณะกรรมการบริหารระบบคอมพิวเตอร์และ CCTV สำนักงานสาธารณสุขจังหวัดเลย
         </div>
-        
-        <div class="item active" style="margin-top: 15px">
+        <!-- Page Content -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-width: 900px; margin: 0 auto; padding-left: 0; padding-right: 0;">
+            <!-- Indicators -->
+            <!-- <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol> -->
+            
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="img/Flow-Comp_CCTV_61.png" alt="กระบวนการบริหารระบบคอมพิวเตอร์ภาครัฐ">
+            </div> 
+            
+            <div class="item">
+                <img src="img/TimeLineComp.jpg" alt="timelinecom">
+            </div>
+
+            </div>
+            
+            <!-- Left and right controls -->
+            <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+            </a>-->
+        </div>
+        <div class="item active">
             <!--<img src="img/logo_MOPH.png" alt="...">-->
-            <?=Html::img(Yii::getAlias('@web').'/img/TimeLineComp.jpg', ['class' => 'img-responsive-center', 'width' => 700, 'height' => 400])?>
+            <?=Html::img(Yii::getAlias('@web').'/img/Flow-Comp_CCTV_61.png', ['class' => 'img-responsive-center', 'width' => 900, 'height' => 600])?>
             <div class="carousel-caption">
                 <!--caption-->
-                
             </div>
         </div>
-
+        <h2 class="thsb f18p"></h2>
         
-
-        <!--<p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>-->
+        <div class="item active">
+            <!--<img src="img/logo_MOPH.png" alt="...">-->
+            <?=Html::img(Yii::getAlias('@web').'/img/TimeLineComp.jpg', ['class' => 'img-responsive-center', 'width' => 500, 'height' => 300])?>
+            <div class="carousel-caption">
+                <!--caption-->
+            </div>
+        </div>
+        <!--
+        <div class="item active" style="margin-top: 15px">
+            <?=Html::img(Yii::getAlias('@web').'/img/Flow-Comp_CCTV_61.png', ['class' => 'img-responsive-center', 'width' => 900, 'height' => 600])?>
+            <?=Html::img(Yii::getAlias('@web').'/img/TimeLineComp.jpg', ['class' => 'img-responsive-center', 'width' => 500, 'height' => 300])?>
+            <div class="carousel-caption">  ppp  </div>
+        </div> -->
     </div>
 
     <div class="body-content">
         <!-- computer -->
         <div class="list-group thsb f22p col-sm-6">
             <a class="list-group-item active">การจัดหาระบบคอมพิวเตอร์ภาครัฐ </a>
-            <a href="https://drive.google.com/drive/folders/0B9e-qx85JSYkX2hFTXJUaUF0ck0?usp=sharing" target="_blank" class="list-group-item">
+            <a href="https://drive.google.com/file/d/1-WvEbFhHd9dsMwTm5_4oUXrZGpaBlNmK/view?usp=sharing" target="_blank" class="list-group-item">
                 - เกณฑ์ราคากลางและคุณลักษณะพื้นฐานครุภัณฑ์คอมพิวเตอร์ ประจำปี พ.ศ. 2560 </a>
-            <a href="https://drive.google.com/file/d/1wy7IJJfsbtgR3aIcH33CnTQKuWrc3cy3/view?usp=sharing" target="_blank" class="list-group-item">
-                - แบบฟอร์มการจัดหาระบบคอมพิวเตอร์ภาครัฐ <i class="fa fa-file-word-o" aria-hidden="true"></i>
+
+            <a href="https://drive.google.com/file/d/1cqQVaO_H1l6Mx70CavFf5GsMfw9ccHCi/view?usp=sharing" target="_blank" class="list-group-item">
+                - แบบฟอร์มรายงานการจัดหาระบบคอมพิวเตอร์ฯ ไม่เกิน 5 ล้านบาท <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <?=Html::img(Yii::getAlias('@web').'/img/new.gif')?>
             </a>
             <a href="https://drive.google.com/drive/folders/0B9e-qx85JSYkWTY2c3JsRnFCREk?usp=sharing" target="_blank" class="list-group-item">
                 - แบบรายงานผล การจัดหาระบบคอมพิวเตอร์ภาครัฐ <i class="fa fa-file-excel-o" aria-hidden="true"></i>
@@ -58,8 +100,9 @@ $this->title = 'CSPC';
                 - คุณลักษณะพื้นฐานของระบบ CCTV จ.เลย ประจำปี พ.ศ. 2560 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 <?=Html::img(Yii::getAlias('@web').'/img/new.gif')?>
             </a>
-            <a href="#" class="list-group-item">
+            <a href="https://drive.google.com/file/d/1mv190AtDKmUinrhn_zkLEzyF9EWa7HCZ/view?usp=sharing" target="_blank" class="list-group-item">
                 - ตัวอย่าง แบบฟอร์มการจัดหาระบบกล้องโทรทัศน์วงจรปิด (CCTV) <i class="fa fa-file-word-o" aria-hidden="true"></i>
+                <?=Html::img(Yii::getAlias('@web').'/img/new.gif')?>
             </a>
         </div>
 
