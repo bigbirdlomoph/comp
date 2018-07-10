@@ -8,6 +8,7 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
@@ -25,13 +26,24 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
+            'yii2learning\\chartbuilder\\' => 26,
             'yii2fullcalendar\\' => 17,
+        ),
+        'v' => 
+        array (
+            'vova07\\imperavi\\tests\\' => 22,
+            'vova07\\imperavi\\' => 16,
         ),
         'u' => 
         array (
             'unclead\\multipleinput\\tests\\' => 28,
             'unclead\\multipleinput\\examples\\' => 31,
             'unclead\\multipleinput\\' => 22,
+        ),
+        't' => 
+        array (
+            'trntv\\aceeditor\\' => 16,
+            'thamtech\\uuid\\' => 14,
         ),
         'r' => 
         array (
@@ -47,10 +59,16 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         ),
         'k' => 
         array (
+            'kartik\\select2\\' => 15,
             'kartik\\grid\\' => 12,
             'kartik\\form\\' => 12,
             'kartik\\dialog\\' => 14,
+            'kartik\\daterange\\' => 17,
             'kartik\\base\\' => 12,
+        ),
+        'd' => 
+        array (
+            'dosamigos\\chartjs\\' => 18,
         ),
         'c' => 
         array (
@@ -68,6 +86,7 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\EventDispatcher\\' => 34,
@@ -77,12 +96,20 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\BrowserKit\\' => 29,
         ),
+        'R' => 
+        array (
+            'Ramsey\\Uuid\\' => 12,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'PhpOffice\\PhpWord\\' => 18,
             'PhpOffice\\Common\\' => 17,
+        ),
+        'M' => 
+        array (
+            'Moontoast\\Math\\' => 15,
         ),
         'G' => 
         array (
@@ -116,7 +143,7 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         ),
         'yii\\gii\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-gii/src',
         ),
         'yii\\faker\\' => 
         array (
@@ -138,9 +165,21 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
         ),
+        'yii2learning\\chartbuilder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yii2learning/yii2-chart-builder',
+        ),
         'yii2fullcalendar\\' => 
         array (
             0 => __DIR__ . '/..' . '/philippfrenzel/yii2fullcalendar',
+        ),
+        'vova07\\imperavi\\tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vova07/yii2-imperavi-widget/tests',
+        ),
+        'vova07\\imperavi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vova07/yii2-imperavi-widget/src',
         ),
         'unclead\\multipleinput\\tests\\' => 
         array (
@@ -153,6 +192,14 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         'unclead\\multipleinput\\' => 
         array (
             0 => __DIR__ . '/..' . '/unclead/yii2-multiple-input/src',
+        ),
+        'trntv\\aceeditor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/trntv/yii2-aceeditor/src',
+        ),
+        'thamtech\\uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thamtech/yii2-uuid/src',
         ),
         'rmrevin\\yii\\fontawesome\\' => 
         array (
@@ -168,6 +215,10 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         array (
             0 => __DIR__ . '/..' . '/miloschuman/yii2-highcharts-widget/src',
         ),
+        'kartik\\select2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
+        ),
         'kartik\\grid\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-grid',
@@ -180,9 +231,17 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog',
         ),
+        'kartik\\daterange\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-date-range',
+        ),
         'kartik\\base\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
+        ),
+        'dosamigos\\chartjs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-chartjs-widget/src',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -203,6 +262,10 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
         'Symfony\\Component\\Yaml\\' => 
         array (
@@ -236,6 +299,10 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         array (
             0 => __DIR__ . '/..' . '/symfony/browser-kit',
         ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -251,6 +318,10 @@ class ComposerStaticInit53aed9c59f0ec641af8181177aca9922
         'PhpOffice\\Common\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/common/src/Common',
+        ),
+        'Moontoast\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/moontoast/math/src/Moontoast/Math',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (

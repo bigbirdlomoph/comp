@@ -56,7 +56,10 @@ $config = [
     'modules' => [
         'gridview' =>  [
              'class' => '\kartik\grid\Module'
-         ]
+        ],
+        'chartbuilder'=>[
+            'class'=> 'yii2learning\chartbuilder\Module'
+        ]
         ],
 ];
 

@@ -4,6 +4,8 @@
 use miloschuman\highcharts\Highcharts;
 use yii\bootstrap\ActiveForm;
 use kartik\grid\GridView;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'รายงานสรุปการจัดหาระบบคอมฯ ภาครัฐ (ในเกณฑ์ราคากลาง)';
 $this->params['breadcrumbs'][] = $this->title;
@@ -120,6 +122,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 echo GridView::widget([
                     'dataProvider' => $dataProvider,
                     'hover' => TRUE,
+                    'floatHeader' => true,
+                    'export'=>[
+                        'fontAwesome'=>FALSE
+                        ], 
                     'panel'=>['type'=>'primary', 
                         'heading'=>'จำนวนมูลค่าการจัดหาระบบคอมพิวเตอร์ภาครัฐ แยกรายเดือน (ในเกณฑ์ราคากลาง)'],
                     'summary'=>'',
@@ -135,13 +141,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             'headerOptions' => ['class' => 'text-center'],
                             'contentOptions' => ['class' => 'text-center'],
                             'options' => ['style' => 'width:30px;'],
-                            'attribute' => 'month_name',
+                            'attribute' => 'monthname',
                             'header' => 'เดือนอนุมัติจัดหา',
-                            'format' => 'raw',
+                            'format' => 'html',
                             'value' => function($data) { 
+                            $month_approve = $data['month_approve']; // ประกาศรับค่าตัวแปรจาก Controller
                             $monthname = $data['monthname']; // ประกาศรับค่าตัวแปรจาก Controller
                             $values = $data['value']; // ประกาศรับค่าตัวแปรจาก Controller
-                            //return Html::a(Html::encode($areaname), ['/report/dmctrlhos', 'areacode' => $areacode]);
+                            return Html::a(Html::encode($monthname), ['/report/sumhosmonth', 'month_approve' => $month_approve]);
                             return empty($data['monthname']) ? '-' : $data['monthname'];
                             }
                         ],

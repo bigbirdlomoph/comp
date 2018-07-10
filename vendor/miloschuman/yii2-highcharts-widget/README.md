@@ -30,14 +30,14 @@ The preferred way to install this extension is through [composer](http://getcomp
 
 Either run
 
-```sh
-php composer.phar require miloschuman/yii2-highcharts-widget
+```
+php composer.phar require --prefer-dist miloschuman/yii2-highcharts-widget "dev-master"
 ```
 
 or add
 
-```sh
-"miloschuman/yii2-highcharts-widget": "^6.0"
+```
+"miloschuman/yii2-highcharts-widget": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -77,9 +77,7 @@ See [/doc/examples](https://github.com/miloschuman/yii2-highcharts/tree/master/d
 
 Alternatively, you can use a valid JSON string in place of an associative array to specify options:
 ```php
-use miloschuman\highcharts\Highcharts;
-
-echo Highcharts::widget([
+Highcharts::widget([
    'options'=>'{
       "title": { "text": "Fruit Consumption" },
       "xAxis": {
@@ -142,7 +140,7 @@ Tips
   ],
   ...
   ```
-  For a list of available scripts, see the contents of `vendor/bower/highcharts/`.
+  For a list of available scripts, see the contents of `vendor/miloschuman/yii2-highcharts-widget/src/assets/`.
 * You can access the JavaScript chart object from another script like this:
 
   ```javascript

@@ -63,13 +63,13 @@ AppAsset::register($this);
     
     //Start Menu group 3 other
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
-                10 อันดับ มูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
-    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
-                10 อันดับครุภัณฑ์ ที่จัดหาสูงสุด', 'url' => ['report/sumqty']];
-    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 รายงานสรุปแยกรายเดือน', 'url' => ['report/summary']];
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 รายงานสรุปแยกรายหน่วยบริการ', 'url' => ['report/sumhos']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                10 อันดับ มูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
+    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                10 อันดับครุภัณฑ์ ที่จัดหาสูงสุด', 'url' => ['report/sumqty']];
     //End Menu group 3
     
        
