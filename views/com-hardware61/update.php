@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\ComHardware61 */
 
-$this->title = Yii::t('app', 'Update Com Hardware61: ' . $model->id, [
+$this->title = Yii::t('app', 'แก้ไขครุภัณฑ์คอมพิวเตอร์ ประจำปี พ.ศ.2561 ' . $model->id, [
     'nameAttribute' => '' . $model->id,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Com Hardware61s'), 'url' => ['index']];

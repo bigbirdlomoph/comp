@@ -15,13 +15,15 @@ class ComHardware61Search extends ComHardware61
     /**
      * {@inheritdoc}
      */
+    public $q;
+    
     public function rules()
     {
         return [
             //[['id'], 'integer'],
             //[['hw_id', 'hw_detail', 'unit', 'hw_group_id', 'hw_detail_id'], 'safe'],
             [['price'], 'number'],
-            [['hw_detail'], 'safe'],
+            [['hw_detail','q'], 'safe'],
         ];
     }
 
@@ -65,12 +67,15 @@ class ComHardware61Search extends ComHardware61
             'price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'hw_id', $this->hw_id])
-            ->andFilterWhere(['like', 'hw_detail', $this->hw_detail])
-            ->andFilterWhere(['like', 'unit', $this->unit])
-            ->andFilterWhere(['like', 'hw_group_id', $this->hw_group_id])
-            ->andFilterWhere(['like', 'hw_detail_id', $this->hw_detail_id]);
+        //$query->andFilterWhere(['like', 'hw_id', $this->hw_id])
+        //    ->andFilterWhere(['like', 'hw_detail', $this->hw_detail])
+        //    ->andFilterWhere(['like', 'unit', $this->unit])
+        //    ->andFilterWhere(['like', 'hw_group_id', $this->hw_group_id])
+        //    ->andFilterWhere(['like', 'hw_detail_id', $this->hw_detail_id]);
+
+        $query->orFilterWhere(['like', 'hw_detail', $this->q]);
 
         return $dataProvider;
     }
 }
+

@@ -55,10 +55,10 @@ AppAsset::register($this);
     //End Menu group 1
     
     //Start Menu group 2 CCTV
-    $rpt_menu_g2[] = ['label' => '<i class="fa fa-book"></i> 
-                หลักเกณฑ์ & แนวทางการจัดหา', 'url' => ['/site/resolution']];
-    $rpt_menu_g2[] = ['label' => '<i class="fa fa-users"></i> 
-                CIO สสจ.', 'url' => ['/site/cio']];
+    //$rpt_menu_g2[] = ['label' => '<i class="fa fa-book"></i> 
+    //            หลักเกณฑ์ & แนวทางการจัดหา', 'url' => ['/site/resolution']];
+    //$rpt_menu_g2[] = ['label' => '<i class="fa fa-users"></i> 
+    //            CIO สสจ.', 'url' => ['/site/cio']];
     //End Menu group 2
     
     //Start Menu group 3 other
@@ -66,8 +66,8 @@ AppAsset::register($this);
                 รายงานสรุปแยกรายเดือน', 'url' => ['report/summary']];
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 รายงานสรุปแยกรายหน่วยบริการ', 'url' => ['report/sumhos']];
-    $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
-                10 อันดับ มูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
+    //$rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+    //            10 อันดับ มูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 10 อันดับครุภัณฑ์ ที่จัดหาสูงสุด', 'url' => ['report/sumqty']];
     //End Menu group 3
@@ -75,9 +75,10 @@ AppAsset::register($this);
        
     $menuItems = [
         ['label' => '<i class="fa fa-home"></i> หน้าแรก', 'url' => ['/']],
-        ['label' => '<i class="fa fa-desktop"></i> Computer', 'items' => $rpt_menu_g1],
-        ['label' => '<i class="fa fa-video-camera"></i> CCTV', 'items' => $rpt_menu_g2],
+        ['label' => '<i class="fa fa-desktop"></i> Computer & CCTV', 'items' => $rpt_menu_g1],
+        //['label' => '<i class="fa fa-video-camera"></i> CCTV', 'items' => $rpt_menu_g2],
         ['label' => '<i class="fa fa-bar-chart-o"></i> รายงานสรุป', 'items' => $rpt_menu_g3],
+        ['label' => 'ค้นหาสเปคคอมฯ 2561', 'url' => ['/com-hardware61/index']],
         ['label' => 'ถาม-ตอบ', 'url' => ['/site/qa']],
         ['label' => 'เกี่ยวกับเรา', 'url' => ['/site/about']],
     ];

@@ -82,7 +82,11 @@ $this->title = 'CSPC';
         <div class="list-group thsb f22p col-sm-6">
             <a class="list-group-item active">การจัดหาระบบคอมพิวเตอร์ภาครัฐ </a>
             <a href="https://drive.google.com/file/d/1viEyyac0MtInui7R3D1HD3sIk6kEf9fF/view?usp=sharing" target="_blank" class="list-group-item">
-                - เกณฑ์ราคากลางและคุณลักษณะพื้นฐานครุภัณฑ์คอมพิวเตอร์ ประจำปี พ.ศ. 2561 
+                - เกณฑ์ราคากลางและคุณลักษณะพื้นฐานคอมพิวเตอร์ ประจำปี พ.ศ. 2561 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                <?=Html::img(Yii::getAlias('@web').'/img/new.gif')?>
+            </a>
+            <a href="https://drive.google.com/file/d/1s_9lBWF14utligb9fZoy-zEU-bZ4ZXHc/view?usp=sharing" target="_blank" class="list-group-item">
+                - เกณฑ์ราคากลางและคุณลักษณะพื้นฐานคอมพิวเตอร์ ประจำปี พ.ศ. 2561 <i class="fa fa-file-word-o" aria-hidden="true"></i>
                 <?=Html::img(Yii::getAlias('@web').'/img/new.gif')?>
             </a>
             

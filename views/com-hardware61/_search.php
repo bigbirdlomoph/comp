@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\ComHardware61;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\ComHardware61Search */
@@ -14,27 +15,15 @@ use yii\widgets\ActiveForm;
         'action' => ['index'],
         'method' => 'get',
         'options' => [
-            'data-pjax' => 1
+            'data-pjax' => true
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'hw_id') ?>
-
-    <?= $form->field($model, 'hw_detail') ?>
-
-    <?= $form->field($model, 'price') ?>
-
-    <?= $form->field($model, 'unit') ?>
-
-    <?php // echo $form->field($model, 'hw_group_id') ?>
-
-    <?php // echo $form->field($model, 'hw_detail_id') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+    <div class="input-group">
+      <?= Html::activeTextInput($model, 'q',['class'=>'form-control','placeholder'=>'ค้นหาข้อมูล...']) ?>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> ค้นหา</button>
+      </span>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -20,13 +20,16 @@ $this->params['breadcrumbs'][] = $this->title;
        <!-- <?= Html::a(Yii::t('app', 'Create Com Hardware61'), ['create'], ['class' => 'btn btn-success']) ?> -->
     </p>
 
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <br>
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             //'hw_id',
             'hw_detail',
             'price',
@@ -35,6 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
             //'hw_detail_id',
 
             //['class' => 'yii\grid\ActionColumn'],
+            //[
+            //'class' => 'yii\grid\ActionColumn',
+            //    'options'=>['style'=>'width:120px;'],
+            //    'buttonOptions'=>['class'=>'btn btn-default'],
+            //    'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>'
+            // ],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

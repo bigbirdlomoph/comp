@@ -8,6 +8,7 @@ use app\models\ComHardware61Search;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ArrayDataProvider;
 
 /**
  * ComHardware61Controller implements the CRUD actions for ComHardware61 model.
@@ -128,4 +129,7 @@ class ComHardware61Controller extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+    
+    
 }
