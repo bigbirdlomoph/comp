@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
+                //'filterModel' => $searchModel,
                 'pjax' => true,
                 
                 'columns' => [                    
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     //'id',
                     'project_name',
-                    'year_budget',
+                    //'year_budget',
                     //'total_budget',
                     'month_approve',
                     'hoscode',

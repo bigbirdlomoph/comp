@@ -27,13 +27,28 @@ class ReportController extends Controller
         GROUP BY f.month_approve
         ";
 
-        $monthname = Yii::$app->request->post('monthname');
-        $values = Yii::$app->request->post('value');
-        $qty = Yii::$app->request->post('qty');
-        $month_approve = Yii::$app->request->post('month_approve');
+        $sql2 = "SELECT m.month_name as monthname61, f.month_approve,
+        SUM((f.quantity)*(h.price))as tvalue
+        FROM form_computer f
+        LEFT JOIN com_hardware_61 h on f.hw_id = h.hw_id
+        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+        WHERE f.month_approve IN('06','07','08','09') and f.yspec IN(2561)
+        GROUP BY f.month_approve
+        ";
+
+        //$monthname = Yii::$app->request->post('monthname');
+        //$values = Yii::$app->request->post('value');
+        //$qty = Yii::$app->request->post('qty');
+        //$month_approve = Yii::$app->request->post('month_approve');
 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        try {
+            $rawData2 = \Yii::$app->db->createCommand($sql2)->queryAll();
         } catch (\yii\db\Exception $e) {
             throw new \yii\web\ConflictHttpException('sql error');
         }
@@ -45,11 +60,20 @@ class ReportController extends Controller
             ],
         ]);
 
+        $dataProvider2 = new ArrayDataProvider([
+            'allModels' => $rawData2,
+            'sort' => [
+                'attributes' => ['tvalue']
+            ],
+        ]);
+
         return $this->render('summary',[
             'dataProvider' => $dataProvider,
+            'dataProvider2' => $dataProvider2,
             //'monthname' => $monthname,
             //'value' => $value,
-            'sql' => $sql
+            'sql' => $sql,
+            'sql2' => $sql2,
         ]);
     }
 
@@ -72,11 +96,9 @@ class ReportController extends Controller
         f.hoscode
         ";
 
-        $monthname = Yii::$app->request->post('monthname');
-        $sprice = Yii::$app->request->post('sprice');
-        $qty = Yii::$app->request->post('qty');
+        //รับค่าตัวแปร
         $month_approve = Yii::$app->request->post('month_approve');
-        $hoscode = Yii::$app->request->post('hoscode');
+        
 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -87,7 +109,7 @@ class ReportController extends Controller
         $dataProvider = new ArrayDataProvider([
             'allModels' => $rawData,
             'sort' => [
-                'attributes'=>['hoscode']
+                'attributes'=>['sprice']
             ],
         ]);
 
@@ -178,16 +200,7 @@ class ReportController extends Controller
         ";
 
         $hoscode = Yii::$app->request->post('hoscode');
-        $off_name = Yii::$app->request->post('off_name');
-        $project_name = Yii::$app->request->post('project_name');
-        $month_approve = Yii::$app->request->post('month_approve');
-        $monthname = Yii::$app->request->post('monthname');
-        $hw_detail = Yii::$app->request->post('hw_detail');
-        $qty = Yii::$app->request->post('qty');
-        $price = Yii::$app->request->post('price');
-        $sumprice = Yii::$app->request->post('sum_price');
-        $total_budget = Yii::$app->request->post('total_budget');
-        
+        $month_approve = Yii::$app->request->post('month_approve');    
         
 
         try {
@@ -220,7 +233,7 @@ class ReportController extends Controller
         SUM(f.sum_price)as value
         FROM form_computer_nonspec f
         LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
-        WHERE f.month_approve IN('10','11','12','01','02','03','04','05')
+        WHERE f.month_approve IN('10','11','12','01','02','03','04','05','06','07','08','09')
         GROUP BY f.month_approve
         ";
 
@@ -252,7 +265,8 @@ class ReportController extends Controller
     public function actionSumhos()
     {
         //$connection = Yii::$app->db;
-        $sql = "SELECT  f.hoscode, o.off_name, f.cupcode, SUM(f.sum_price)as sprice
+        $sql = "SELECT  f.hoscode, o.off_name, f.cupcode, 
+        SUM(f.sum_price)as sprice, f.month_approve
         FROM form_computer f
         LEFT JOIN co_office o on o.off_id = f.hoscode
         LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
@@ -263,12 +277,27 @@ class ReportController extends Controller
         LIMIT 10
         ";
 
-        $hoscode = Yii::$app->request->post('hoscode');
-        $values = Yii::$app->request->post('sprice');
-        $offname = Yii::$app->request->post('off_name');
+        $sql2 = "SELECT  f.hoscode, o.off_name, f.cupcode, 
+        SUM(f.sum_price)as sprice, f.month_approve
+        FROM form_computer f
+        LEFT JOIN co_office o on o.off_id = f.hoscode
+        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+        LEFT JOIN co_district d on d.distid = o.distid
+        WHERE f.month_approve IN('06','07','08','09') and f.yspec IN(2561)
+        GROUP BY f.hoscode
+        ORDER BY sprice desc
+        LIMIT 10
+        ";
+
 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        try {
+            $rawData2 = \Yii::$app->db->createCommand($sql2)->queryAll();
         } catch (\yii\db\Exception $e) {
             throw new \yii\web\ConflictHttpException('sql error');
         }
@@ -280,11 +309,18 @@ class ReportController extends Controller
             ],
         ]);
 
+        $dataProvider2 = new ArrayDataProvider([
+            'allModels' => $rawData2,
+            'sort' => [
+                'attributes' => ['sprice']
+            ],
+        ]);
+
         return $this->render('sumhos',[
             'dataProvider' => $dataProvider,
-            //'monthname' => $monthname,
-            //'value' => $value,
-            'sql' => $sql
+            'dataProvider2' => $dataProvider2,
+            'sql' => $sql,
+            'sql2' => $sql2,
         ]);
     }
 
@@ -292,18 +328,13 @@ class ReportController extends Controller
     {
         //$connection = Yii::$app->db;
         $sql = "SELECT  d.distid, d.distname, SUM(f.sum_price)as sprice
-        FROM form_computer f
-        LEFT JOIN co_office o on o.off_id = f.hoscode
-        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
-        LEFT JOIN co_district d on d.distid = o.distid
-        WHERE f.month_approve IN('10','11','12','01','02','03','04','05')
-        GROUP BY o.distid
-        ";
-
-        $distid = Yii::$app->request->post('distid');
-        $distname = Yii::$app->request->post('distname');
-        $values = Yii::$app->request->post('sprice');
-        
+                FROM form_computer f
+                LEFT JOIN co_office o on o.off_id = f.hoscode
+                LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+                LEFT JOIN co_district d on d.distid = o.distid
+                WHERE f.month_approve IN('10','11','12','01','02','03','04','05')
+                GROUP BY o.distid
+                ";
 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -329,22 +360,35 @@ class ReportController extends Controller
     public function actionSumqty()
     {
         //$connection = Yii::$app->db;
-        $sql = "SELECT h.hw_id, h.hw_detail, SUM(f.quantity)as qty, SUM((f.quantity)*(h.price))as sprice
-        FROM form_computer f
-        LEFT JOIN com_hardware h on f.hw_id = h.hw_id
-        GROUP BY h.hw_id
-        ORDER BY QTY DESC
-        LIMIT 10
-        ";
+        $sql = "SELECT h.hw_id, h.hw_detail, 
+                SUM(f.quantity)as qty, 
+                SUM((f.quantity)*(h.price))as sprice
+                FROM form_computer f
+                LEFT JOIN com_hardware h on f.hw_id = h.hw_id
+                WHERE f.yspec IN(2560)
+                GROUP BY h.hw_id
+                ORDER BY QTY DESC, sprice DESC
+                LIMIT 10 ";
 
-        $hw_id = Yii::$app->request->post('hw_id');
-        $hw_detail = Yii::$app->request->post('hw_detail');
-        $qty = Yii::$app->request->post('qty');
-        $sprice = Yii::$app->request->post('sprice');
-        
-
+        //spec 61
+        $sql2 = "SELECT h.hw_id, h.hw_detail, 
+                 SUM(f.quantity)as qty, 
+                 SUM((f.quantity)*(h.price))as sprice
+                 FROM form_computer f
+                 LEFT JOIN com_hardware_61 h on f.hw_id = h.hw_id
+                 WHERE f.yspec IN(2561)
+                 GROUP BY h.hw_id
+                 ORDER BY QTY DESC, sprice DESC
+                 LIMIT 10 ";
+ 
         try {
             $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        try {
+            $rawData2 = \Yii::$app->db->createCommand($sql2)->queryAll();
         } catch (\yii\db\Exception $e) {
             throw new \yii\web\ConflictHttpException('sql error');
         }
@@ -352,15 +396,22 @@ class ReportController extends Controller
         $dataProvider = new ArrayDataProvider([
             'allModels' => $rawData,
             'sort' => [
-                'attributes'=>['hw_id','hw_detail','qty','sprice']
+                'attributes'=>['qty']
+            ],
+        ]);
+
+        $dataProvider2 = new ArrayDataProvider([
+            'allModels' => $rawData2,
+            'sort' => [
+                'attributes'=>['qty']
             ],
         ]);
 
         return $this->render('sumqty',[
             'dataProvider' => $dataProvider,
-            //'monthname' => $monthname,
-            //'value' => $value,
-            'sql' => $sql
+            'dataProvider2' => $dataProvider2,
+            'sql' => $sql,
+            'sql2' => $sql2
         ]);
     }
 }

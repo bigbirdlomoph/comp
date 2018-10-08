@@ -31,7 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             //'hw_id',
-            'hw_detail',
+            //'hw_detail',
+            [
+                'headerOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-left'],
+                'attribute' => 'hw_detail',
+                'header' => 'รายการครุภัณฑ์คอมพิวเตอร์',
+                'format' => 'raw',
+                'value' => function($data) { 
+                $hw_id = $data['hw_id']; // ประกาศรับค่าตัวแปรจาก Controller
+                $hw_detail = $data['hw_detail']; // ประกาศรับค่าตัวแปรจาก Controller
+                //return Html::a(Html::encode($hw_detail), ['/report/dmctrlhos', 'areacode' => $hw_id]);
+                return empty($data['hw_detail']) ? '-' : $data['hw_detail'];
+                }
+            ],
             'price',
             'unit',
             //'hw_group_id',

@@ -1,75 +1,14 @@
 <?php
-
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-//use yii\widgets\ActiveForm;
 use yii\bootstrap\ActiveForm;
 use app\models\CoOffice;
 use app\models\ComHardware;
 use app\models\ComMonthApprove;
 use app\models\ComYbudget;
 use app\models\ComMoneySource;
-
-use unclead\widgets\MultipleInput;
-use unclead\widgets\MultipleInputColumn;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\FormComputer */
-/* @var $form yii\widgets\ActiveForm */
-
-    //ซ่อน-แสดง input ตามเงื่อนไข
-    $this->registerJs("
-    var input1 = 'input[name=\"FormComputer[hw_id]\"]';
-    setHideInput(3,$(input1).val(),'.field-blog-tag');
-    $(input1).click(function(val){
-        setHideInput(3,$(this).val(),'.field-blog-tag');
-    });
-
-
-    function setHideInput(set,value,objTarget)
-    {
-        console.log(set+'='+value);
-        if(set==value)
-        {
-            $(objTarget).show(500);
-        }
-        else
-        {
-            $(objTarget).hide(500);
-        }
-    }
-    ");
-
 ?>
-<?php $this->registerJs('
-            $("#order-items").on("afterAddRow", function(e){
-                //console.log("test");
-                
-            });
-            $.fn.init_change = function(){
-                
-                var product_id = $(this).val();
-                
-                $.get(
-                    "'.Url::toRoute('/site/product-detail').'",
-                    {
-                        id: hw_id
-                    },
-                    function (data)
-                    {
-                        var result = data.split("-");
-                                   
-                        $(".field-order-items-"+sid[2]+"-hw_detail").text(result[0]);
-                        $(".field-order-items-"+sid[2]+"-price").text(result[1]);
-            
-                    }
-                );
-            
-            };
-       
-        ')?>
-
 
 <div class="form-computer-form">
 
@@ -94,7 +33,7 @@ use unclead\widgets\MultipleInputColumn;
                     <?= $form->field($model, 'project_name')->textInput(['maxlength' => true]) ?>
                 </div>
 
-                <div class="col-sm-3 col-md-3">
+                <!--<div class="col-sm-3 col-md-3">
                     <?= $form->field($model, 'year_budget')->dropdownList(
                         ArrayHelper::map(ComYbudget::find()->all(),
                         'year_budget',
@@ -103,7 +42,7 @@ use unclead\widgets\MultipleInputColumn;
                             'id'=>'year_budget',
                             'prompt'=>'-กรุณาเลือก-'
                         ]); ?>
-                </div>
+                </div> -->
                 <div class="col-sm-3 col-md-3">
                     <?= $form->field($model, 'total_budget')->textInput(['maxlength' => true]) ?>
                 </div>

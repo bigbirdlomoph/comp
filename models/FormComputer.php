@@ -41,7 +41,7 @@ class FormComputer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_name', 'year_budget', 'month_approve', 'hoscode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'required'],
+            [['project_name', 'month_approve', 'hoscode', 'hw_id', 'quantity'], 'required'],
             [['project_name', 'note'], 'string', 'max' => 255],
             [['year_budget', 'distid', 'year_install'], 'string', 'max' => 4],
             [['hoscode', 'cupcode', 'hw_id', 'quantity', 'new_hw', 'replace_hw'], 'string', 'max' => 5],
@@ -49,6 +49,8 @@ class FormComputer extends \yii\db\ActiveRecord
             [['money_source'], 'string', 'max' => 100],
             [['month_approve'], 'string', 'max' => 50],
             [['total_budget'], 'string', 'max' => 10],
+            [['status'], 'string', 'max' => 1],
+            [['report'], 'string', 'max' => 200],
         ];
     }
 
@@ -75,6 +77,8 @@ class FormComputer extends \yii\db\ActiveRecord
             'replace_hw' => 'ทดแทน (จำนวน)',
             'year_install' => 'ปีที่ติดตั้ง (กรณีซื้อทดแทน)',
             'note' => 'หมายเหตุ',
+            'status' => 'ผลการพิจารณา',
+            'report' => 'รายงานผลการจัดหา',
         ];
     }
 }

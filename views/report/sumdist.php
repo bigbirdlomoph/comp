@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- ส่วนแสดง Grid View Kartik-->
 
-    <div class="col-md-6 col-xs-6">
+    <div class="col-md-6 col-xs-12">
         <div class="body-content">
             <?php
                 if (isset($dataProvider))

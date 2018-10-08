@@ -15,7 +15,7 @@ class CoOfficeQuery extends \yii\db\ActiveQuery
     }*/
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return CoOffice[]|array
      */
     public function all($db = null)
@@ -24,7 +24,7 @@ class CoOfficeQuery extends \yii\db\ActiveQuery
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return CoOffice|array|null
      */
     public function one($db = null)

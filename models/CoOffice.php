@@ -5,17 +5,17 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "co_office".
+ * This is the model class for table "{{%co_office}}".
  *
- * @property string $off_id
- * @property string $off_name
- * @property string $off_type
- * @property string $provid
- * @property string $distid
- * @property string $subdistid
- * @property string $villid
+ * @property string $off_id รหัสหน่วยบริการ
+ * @property string $off_name ชื่อหน่วยบริการ
+ * @property string $off_type ประเภทหน่วยบริการ
+ * @property string $provid รหัสจังหวัด
+ * @property string $distid รหัสอำเภอ
+ * @property string $subdistid รหัสตำบล
+ * @property string $villid รหัสหมู่บ้าน
  * @property string $villno
- * @property string $postcode
+ * @property string $postcode รหัสไปรษณีย์
  * @property string $cup_code
  * @property string $pcu_code
  * @property string $pointx
@@ -26,15 +26,15 @@ use Yii;
 class CoOffice extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'co_office';
+        return '{{%co_office}}';
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -49,35 +49,36 @@ class CoOffice extends \yii\db\ActiveRecord
             [['villid'], 'string', 'max' => 8],
             [['pointx', 'pointy'], 'string', 'max' => 50],
             [['status'], 'string', 'max' => 1],
+            [['off_id'], 'unique'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'off_id' => 'Off ID',
-            'off_name' => 'Off Name',
-            //'off_type' => 'Off Type',
-            //'provid' => 'Provid',
-            'distid' => 'Distid',
-            //'subdistid' => 'Subdistid',
-            //'villid' => 'Villid',
-            //'villno' => 'Villno',
-            //'postcode' => 'Postcode',
-            'cup_code' => 'Cup Code',
-            //'pcu_code' => 'Pcu Code',
-            //'pointx' => 'Pointx',
-            //'pointy' => 'Pointy',
-            //'status' => 'Status',
-            //'updatedate' => 'Updatedate',
+            'off_id' => Yii::t('app', 'รหัสหน่วยบริการ'),
+            'off_name' => Yii::t('app', 'ชื่อหน่วยบริการ'),
+            'off_type' => Yii::t('app', 'ประเภทหน่วยบริการ'),
+            'provid' => Yii::t('app', 'รหัสจังหวัด'),
+            'distid' => Yii::t('app', 'รหัสอำเภอ'),
+            'subdistid' => Yii::t('app', 'รหัสตำบล'),
+            'villid' => Yii::t('app', 'รหัสหมู่บ้าน'),
+            'villno' => Yii::t('app', 'หมู่'),
+            'postcode' => Yii::t('app', 'รหัสไปรษณีย์'),
+            'cup_code' => Yii::t('app', 'คปสอ.'),
+            'pcu_code' => Yii::t('app', 'Pcu Code'),
+            'pointx' => Yii::t('app', 'Pointx'),
+            'pointy' => Yii::t('app', 'Pointy'),
+            'status' => Yii::t('app', 'Status'),
+            'updatedate' => Yii::t('app', 'Updatedate'),
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @return CoOfficeQuery the active query used by this AR class.
      */
     public static function find()

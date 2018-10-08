@@ -45,6 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'replace_hw',
             'year_install',
             'note',
+            'status',
+            'report',
         ],
     ]) ?>
 
