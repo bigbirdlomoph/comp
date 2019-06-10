@@ -41,12 +41,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($data) { 
                 $hw_id = $data['hw_id']; // ประกาศรับค่าตัวแปรจาก Controller
                 $hw_detail = $data['hw_detail']; // ประกาศรับค่าตัวแปรจาก Controller
-                //return Html::a(Html::encode($hw_detail), ['/report/dmctrlhos', 'areacode' => $hw_id]);
+                return Html::a(Html::encode($hw_detail), ['/com-hardware61/hwdetail', 'hw_id' => $hw_id]);
                 return empty($data['hw_detail']) ? '-' : $data['hw_detail'];
                 }
             ],
-            'price',
-            'unit',
+            [
+                'headerOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-right'],
+                'options' => ['style' => 'width:30px;'],
+                'attribute' => 'price',
+                'header' => 'ราคากลาง (บาท)',
+                'format'=>['decimal', 0],
+                'value' => function($data) {
+                    return empty($data['price']) ? '-' : $data['price'];
+                }
+            ],
+            [
+                'headerOptions' => ['class' => 'text-center'],
+                'contentOptions' => ['class' => 'text-right'],
+                'options' => ['style' => 'width:20px;'],
+                'attribute' => 'unit',
+                'header' => 'หน่วย',
+                'format'=>['html'],
+                'value' => function($data) {
+                    return empty($data['unit']) ? '-' : $data['unit'];
+                }
+            ],
+
+            //'price',
+            //'unit',
             //'hw_group_id',
             //'hw_detail_id',
 
@@ -60,4 +83,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+    
 </div>

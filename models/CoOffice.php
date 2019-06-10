@@ -11,11 +11,13 @@ use Yii;
  * @property string $off_name ชื่อหน่วยบริการ
  * @property string $off_type ประเภทหน่วยบริการ
  * @property string $provid รหัสจังหวัด
+ * @property string $distname ชื่ออำเภอ
  * @property string $distid รหัสอำเภอ
  * @property string $subdistid รหัสตำบล
  * @property string $villid รหัสหมู่บ้าน
  * @property string $villno
  * @property string $postcode รหัสไปรษณีย์
+ * @property string $cup_name คปสอ.
  * @property string $cup_code
  * @property string $pcu_code
  * @property string $pointx
@@ -42,7 +44,7 @@ class CoOffice extends \yii\db\ActiveRecord
             [['off_id'], 'required'],
             [['updatedate'], 'safe'],
             [['off_id', 'postcode', 'cup_code', 'pcu_code'], 'string', 'max' => 5],
-            [['off_name'], 'string', 'max' => 100],
+            [['off_name', 'distname', 'cup_name'], 'string', 'max' => 100],
             [['off_type', 'provid', 'villno'], 'string', 'max' => 2],
             [['distid'], 'string', 'max' => 4],
             [['subdistid'], 'string', 'max' => 6],
@@ -63,12 +65,14 @@ class CoOffice extends \yii\db\ActiveRecord
             'off_name' => Yii::t('app', 'ชื่อหน่วยบริการ'),
             'off_type' => Yii::t('app', 'ประเภทหน่วยบริการ'),
             'provid' => Yii::t('app', 'รหัสจังหวัด'),
+            'distname' => Yii::t('app', 'ชื่ออำเภอ'),
             'distid' => Yii::t('app', 'รหัสอำเภอ'),
             'subdistid' => Yii::t('app', 'รหัสตำบล'),
             'villid' => Yii::t('app', 'รหัสหมู่บ้าน'),
-            'villno' => Yii::t('app', 'หมู่'),
+            'villno' => Yii::t('app', 'Villno'),
             'postcode' => Yii::t('app', 'รหัสไปรษณีย์'),
-            'cup_code' => Yii::t('app', 'คปสอ.'),
+            'cup_name' => Yii::t('app', 'คปสอ.'),
+            'cup_code' => Yii::t('app', 'Cup Code'),
             'pcu_code' => Yii::t('app', 'Pcu Code'),
             'pointx' => Yii::t('app', 'Pointx'),
             'pointy' => Yii::t('app', 'Pointy'),

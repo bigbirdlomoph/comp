@@ -21,8 +21,8 @@ class CoOfficeSearch extends CoOffice
     {
         return [
             [['off_id', 'off_name', 'off_type', 
-            'provid', 'distid', 'subdistid', 'villid', 
-            'villno', 'postcode', 'cup_code', 'pcu_code', 
+            'provid', 'distname', 'distid', 'subdistid', 'villid', 
+            'villno', 'postcode', 'cup_name', 'cup_code', 'pcu_code', 
             'pointx', 'pointy', 'status', 'updatedate', 'q'], 'safe'],
         ];
     }

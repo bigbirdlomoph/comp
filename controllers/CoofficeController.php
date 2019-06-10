@@ -117,9 +117,9 @@ class CoofficeController extends Controller
      * @return CoOffice the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $off_id)
+    protected function findModel($off_id)
     {
-        if (($model = CoOffice::findOne(['id' => $id, 'off_id' => $$off_id])) !== null) {
+        if (($model = CoOffice::findOne(['off_id' => $off_id])) !== null) {
             return $model;
         }
 

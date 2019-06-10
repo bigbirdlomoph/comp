@@ -3,30 +3,41 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'แนวทางปฏิบัติการจัดหาระบบคอมพิวเตอร์';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-resolution">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
     <div class="jumbotron">
-        <div class="item active">
-        <!--<img src="img/logo_MOPH.png" alt="...">-->
-        <?=Html::img(Yii::getAlias('@web').'/img/Flow-Comp_CCTV_61.png', ['class' => 'img-responsive-center', 'width' => 900, 'height' => 600])?>
-            <div class="carousel-caption">
-                <!--caption-->
+        <div class="thsb f30p">
+            คณะกรรมการบริหารระบบคอมพิวเตอร์และ CCTV สำนักงานสาธารณสุขจังหวัดเลย
+            </div>
+        
+            <!-- Page Content -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="max-width: 900px; margin: 0 auto; padding-left: 0; padding-right: 0;">
+            
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
+                </ol>
+            
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                        <img src="img/New_Flow_Com_In.png" alt="กระบวนการบริหารระบบคอมพิวเตอร์ภาครัฐ (กรณีมีในเกณฑ์ราคากลาง)">
+                    </div> 
+
+                <div class="item">
+                        <img src="img/new_Flow_Com_Out.png" alt="กระบวนการบริหารระบบคอมพิวเตอร์ภาครัฐ (กรณีไม่ตรงเกณฑ์/CCTV)">
+                    </div> 
+
+                </div>
+
             </div>
         </div>
-    
-        <h2 class="thsb f18p"></h2>
-
-        <div class="item active">
-            <!--<img src="img/logo_MOPH.png" alt="...">-->
-            <?=Html::img(Yii::getAlias('@web').'/img/TimeLineComp.jpg', ['class' => 'img-responsive-center', 'width' => 500, 'height' => 300])?>
-            <div class="carousel-caption">
-                <!--caption-->
-            </div>
-        </div>
-
-        <!--<code><?= __FILE__ ?></code>-->
-    </div>
-</div>

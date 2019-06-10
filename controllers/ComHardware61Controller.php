@@ -130,6 +130,34 @@ class ComHardware61Controller extends Controller
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
 
+    public function actionHwdetail($hw_id)
+    {
+        $sql = "SELECT h.hw_id, h.hw_detail, h.price, d.hw_detail_name
+                FROM com_hardware_61 h
+                LEFT JOIN com_hardware_detail_61 d on d.hw_detail_id = h.hw_id
+                WHERE h.hw_id=$hw_id
+                ";
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['hw_id','hw_detail','price','hw_detail_name']
+            ],
+        ]);
+
+        return $this->render('hwdetail',[
+            'dataProvider' => $dataProvider,
+            'sql' => $sql,
+            //'hw_detail' => $hw_detail,
+        ]);
+    }
+
     
     
 }

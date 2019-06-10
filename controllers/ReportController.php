@@ -414,4 +414,272 @@ class ReportController extends Controller
             'sql2' => $sql2
         ]);
     }
+
+    // ปีงบ 2562
+
+    public function actionSum62()
+    {
+        //$connection = Yii::$app->db;
+        $sql = "SELECT m.month_name as monthname, f.month_approve, 
+        COUNT(DISTINCT f.hw_id)as hardware, 
+		COUNT(DISTINCT f.hoscode)as hoscode, 
+        SUM(f.quantity)as QTY, 
+        SUM((f.quantity)*(h.price))as value
+        FROM form_computer_62 f
+        LEFT JOIN com_hardware_61 h on f.hw_id = h.hw_id
+        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+        WHERE f.month_approve IN('10','11','12','01','02','03','04','05','06','07','08','09')
+        GROUP BY f.month_approve
+        ORDER BY f.id
+        ";
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['monthname','value']
+            ],
+        ]);
+
+        
+        return $this->render('sum62',[
+            'dataProvider' => $dataProvider,
+            //'dataProvider2' => $dataProvider2,
+            //'monthname' => $monthname,
+            //'value' => $value,
+            'sql' => $sql,
+            //'sql2' => $sql2,
+        ]);
+    }
+
+    public function actionSumhosmonth62($month_approve)
+    {
+        //$connection = Yii::$app->db;
+        $sql = "SELECT
+        f.hoscode,
+        o.off_name,
+        f.month_approve,
+        m.month_name AS monthname,
+        SUM(sum_price) AS sprice
+        FROM
+            form_computer_62 f
+        LEFT JOIN co_office o ON o.off_id = f.hoscode
+        LEFT JOIN com_month_approve m ON m.month_mm = f.month_approve
+        WHERE
+            f.month_approve = '$month_approve'
+        GROUP BY
+        f.hoscode
+        ORDER BY o.off_type
+        ";
+
+        //รับค่าตัวแปร
+        $month_approve = Yii::$app->request->post('month_approve');
+        
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['sprice']
+            ],
+        ]);
+
+        return $this->render('sumhosmonth62',[
+            'dataProvider' => $dataProvider,
+            //'monthname' => $monthname,
+            //'value' => $value,
+            'sql' => $sql
+        ]);
+    }
+
+    public function actionSumdist62()
+    {
+        //$connection = Yii::$app->db;
+        $sql = "SELECT  d.distid, o.cup_code, o.cup_name, d.distname, SUM(f.sum_price)as sprice
+                FROM form_computer_62 f
+                LEFT JOIN co_office o on o.off_id = f.hoscode
+                LEFT JOIN co_district d on d.distid = o.distid
+                GROUP BY o.cup_code
+                ORDER BY o.cup_code
+                ";
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['distid','distname','sprice']
+            ],
+        ]);
+
+        return $this->render('sumdist62',[
+            'dataProvider' => $dataProvider,
+            //'monthname' => $monthname,
+            //'value' => $value,
+            'sql' => $sql
+        ]);
+    }
+
+    public function actionSumcup62($cup_code)
+    {
+        //$connection = Yii::$app->db;
+        $sql = "SELECT  f.hoscode, o.off_id, o.off_name, SUM(f.sum_price)as sprice
+                FROM form_computer_62 f
+                LEFT JOIN co_office o on o.off_id = f.hoscode
+                LEFT JOIN co_district d on d.distid = o.distid
+                WHERE o.cup_code=$cup_code
+                GROUP BY o.off_id
+                ";
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['off_id','off_name','sprice']
+            ],
+        ]);
+
+        return $this->render('sumcup62',[
+            'dataProvider' => $dataProvider,
+            'sql' => $sql
+        ]);
+    }
+
+    public function actionComdetail62($hoscode)
+    {
+        //$connection = Yii::$app->db;
+        $sql = "SELECT f.hoscode, o.off_name, h.hw_detail, f.quantity as qty, h.price, f.sum_price
+        FROM form_computer_62 f
+        LEFT JOIN co_office o on o.off_id = f.hoscode
+        LEFT JOIN co_district d on d.distid = o.distid
+        LEFT JOIN com_hardware_61 h on h.hw_id = f.hw_id
+        WHERE f.hoscode=$hoscode
+        ";
+       
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['hw_id']
+            ],
+        ]);
+
+        return $this->render('comdetail62',[
+            'dataProvider' => $dataProvider,
+            'rawData' => $rawData,
+            'sql' => $sql
+        ]);
+    }
+
+    // update 30 04 2562
+    public function actionReportq162()
+    {
+        //$connection = Yii::$app->db;
+        $sql = " SELECT
+            f.month_approve,
+            f.month_year,
+            concat(m.month_name,' พ.ศ. ',f.month_year)as mmyy,
+	        m.month_name,
+            f.hoscode,
+            o.off_name,
+            d.distname,
+            f.sum_price,
+            sum(f.sum_price) AS total_value,
+            f.report,
+			r.report_name,
+			f.request_id
+        FROM
+            form_computer_62 f
+        LEFT JOIN co_office o ON o.off_id = f.hoscode
+        LEFT JOIN co_district d ON d.distid = o.distid
+        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+		LEFT JOIN com_report r ON r.report_status = f.report
+        GROUP BY f.hoscode, f.month_approve
+        ORDER BY f.id, o.off_type ";
+       
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['id']
+            ],
+        ]);
+
+        return $this->render('reportq162',[
+            'dataProvider' => $dataProvider,
+            'rawData' => $rawData,
+            'sql' => $sql
+        ]);
+    }
+
+    public function actionReportSum62()
+    {
+        //$connection = Yii::$app->db;
+        $sql = " SELECT
+            m.month_name
+            , f.month_year
+            , count(DISTINCT f.hoscode)as cc_hos
+            , COUNT(f.quantity) as qty
+            , SUM(f.sum_price)as totalvalue
+        FROM
+            form_computer_62 f
+        LEFT JOIN co_office o ON o.off_id = f.hoscode
+        LEFT JOIN co_district d ON d.distid = o.distid
+        LEFT JOIN com_month_approve m on m.month_mm = f.month_approve
+        GROUP BY
+            f.month_approve
+        ORDER BY f.id ";
+       
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $rawData,
+            'sort' => [
+                'attributes'=>['id']
+            ],
+        ]);
+
+        return $this->render('reportsum62',[
+            'dataProvider' => $dataProvider,
+            'rawData' => $rawData,
+            'sql' => $sql
+        ]);
+    }
+
 }

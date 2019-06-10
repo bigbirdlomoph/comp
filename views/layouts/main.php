@@ -50,38 +50,55 @@ AppAsset::register($this);
     //Start Menu group 1 Computer
     $rpt_menu_g1[] = ['label' => '<i class="fa fa-book"></i>
                  หลักเกณฑ์ & แนวทางการจัดหา', 'url' => ['/site/resolution']];
+
     $rpt_menu_g1[] = ['label' => '<i class="fa fa-users"></i>
                  CIO สสจ.', 'url' => ['/site/cio']];
     //End Menu group 1
     
     //Start Menu group 2 CCTV
     $rpt_menu_g2[] = ['label' => '<i class="fa fa-book"></i> 
-                ค้นหาครุภัณฑ์คอมฯ', 'url' => ['/com-hardware61/index']];
-    $rpt_menu_g2[] = ['label' => '<i class="fa fa-users"></i> 
+                เกณฑ์ราคากลางครุภัณฑ์คอมฯ ปี พ.ศ.2561', 'url' => ['/com-hardware61/index']];
+    
+    $rpt_menu_g2[] = ['label' => '<i class="fa fa-book"></i> 
+                เกณฑ์ราคากลางครุภัณฑ์คอมฯ ปี พ.ศ.2562', 'url' => ['/com-hardware62/index']];
+
+    $rpt_menu_g2[] = ['label' => '<i class="fa fa-h-square"></i> 
                 ค้นหาหน่วยบริการ.', 'url' => ['/cooffice/index']];
     //End Menu group 2
     
     //Start Menu group 3 other
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 รายงานสรุปแยกรายเดือน', 'url' => ['report/summary']];
+
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 10 อันดับหน่วยงาน ที่มีมูลค่าจัดหาสูงสุด', 'url' => ['report/sumhos']];
+
     $rpt_menu_g3[] = ['label' => '<i class="fa fa-pie-chart"></i> 
                 10 อันดับครุภัณฑ์ ที่จัดหาสูงสุด', 'url' => ['report/sumqty']];
     //End Menu group 3
+
+    //Start Menu group 4 other
+    $rpt_menu_g4[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                รายงานสรุปแยกรายเดือน', 'url' => ['report/sum62']];
+
+    $rpt_menu_g4[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                รายงานสรุปการรายงานผลการจัดหา', 'url' => ['report/reportq162']];
+
+    $rpt_menu_g4[] = ['label' => '<i class="fa fa-pie-chart"></i> 
+                สรุปแยกรายอำเภอ', 'url' => ['report/sumdist62']];
+    //End Menu group 4
     
        
     $menuItems = [
         ['label' => '<i class="fa fa-home"></i> หน้าแรก', 'url' => ['/']],
         ['label' => '<i class="fa fa-desktop"></i> Computer & CCTV', 'items' => $rpt_menu_g1],
         ['label' => '<i class="fa fa-search"></i> ระบบค้นหา', 'items' => $rpt_menu_g2],
-        ['label' => '<i class="fa fa-bar-chart-o"></i> รายงานสรุป', 'items' => $rpt_menu_g3],
+        ['label' => '<i class="fa fa-bar-chart-o"></i> รายงาน ปีงบ 2561', 'items' => $rpt_menu_g3],
+        ['label' => '<i class="fa fa-bar-chart-o"></i> รายงาน ปีงบ 2562', 'items' => $rpt_menu_g4],
         //['label' => 'ค้นหาครุภัณฑ์คอมฯ', 'url' => ['/com-hardware61/index']],
         ['label' => 'ถาม-ตอบ', 'url' => ['/site/qa']],
         ['label' => 'เกี่ยวกับเรา', 'url' => ['/site/about']],
     ];
-    
-   
     
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

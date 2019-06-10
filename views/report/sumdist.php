@@ -5,7 +5,7 @@ use miloschuman\highcharts\Highcharts;
 use yii\bootstrap\ActiveForm;
 use kartik\grid\GridView;
 
-$this->title = 'สรุปการจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)';
+$this->title = 'การจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="panel-heading">
             <h3 class="panel-title">
                 <i class="glyphicon glyphicon-signal"></i>
-                สรุปการจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)</h3>
+                การจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)</h3>
         </div>
         
             <div style="display: none">
@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'dataProvider' => $dataProvider,
                     'hover' => TRUE,
                     'panel'=>['type'=>'primary', 
-                        'heading'=>'สรุปการจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)'],
+                        'heading'=>'การจัดหาระบบคอมพิวเตอร์ แยกรายอำเภอ (ในเกณฑ์ราคากลาง)'],
                     'summary'=>'',
                     'columns' => [
                         [

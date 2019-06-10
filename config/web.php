@@ -49,6 +49,13 @@ $config = [
                 'module/<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
+        'view'=>[
+            'theme'=>[
+                'pathMap'=>[
+                    '@app/views'=>'themes/material/views/layouts'
+                ]
+            ]
+        ],
         
     ],
     'params' => $params,
@@ -61,6 +68,8 @@ $config = [
             'class'=> 'yii2learning\chartbuilder\Module'
         ]
         ],
+    
+    
 ];
 
 if (YII_ENV_DEV) {
